@@ -23,7 +23,10 @@ jobs:
       - name: Install System Dependencies (Tesseract & OpenCV libs)
         run: |
           sudo apt-get update
-          sudo apt-get install -y tesseract-ocr libgl1-mesa-glx libglib2.0-0
+          sudo apt-get install -y --no-install-recommends \
+            tesseract-ocr \
+            libgl1 \
+            libglib2.0-0
 
       - name: Install Python Dependencies
         run: |
@@ -33,12 +36,16 @@ jobs:
 
       - name: Run Linter (Ruff)
         run: |
-          # Fails the build if lint rules are violated
-          ruff check .
+          # Enforces critical syntax/import issues while letting style differences pass
+          ruff check . --select E,F,W --ignore E501
 
       - name: Run Unit Tests
         run: |
-          pytest tests/ || echo "No tests directory found yet, skipping..."
+          if [ -d "tests" ]; then
+            pytest tests/
+          else
+            echo "No tests directory found, skipping..."
+          fi
 
   build-docker-image:
     needs: lint-and-test
@@ -55,7 +62,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: false # Set to true and add registry credentials if pushing to DockerHub/GHCR
+          push: false
           tags: securekiosk-ai:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
