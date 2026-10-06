@@ -11,8 +11,7 @@ langgraph>=0.0.60
 
 # Computer Vision & Image Processing
 opencv-python-headless==4.9.0.80
-numpy>=1.26.4
-pillow>=10.4.0
+numpy<2.0.0pillow>=10.4.0
 
 # OCR & NLP / Privacy Redaction
 pytesseract==0.3.10
