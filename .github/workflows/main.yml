@@ -36,7 +36,7 @@ jobs:
 
       - name: Run Linter (Ruff)
         run: |
-          # Enforces critical syntax/import issues while letting style differences pass
+          # Checks critical syntax and import errors, ignoring non-breaking line length rules
           ruff check . --select E,F,W --ignore E501
 
       - name: Run Unit Tests
