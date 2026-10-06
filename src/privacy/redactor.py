@@ -1,16 +1,21 @@
 from collections import Counter
 from presidio_analyzer import AnalyzerEngine
+from presidio_analyzer.nlp_engine import NlpEngineProvider
 from presidio_anonymizer import AnonymizerEngine
 from src.schemas.privacy_schema import RedactionResult
 
 
 class PIIRedactor:
     def __init__(self):
-        """
-        Initializes the Presidio NLP engines. 
-        Loading this is computationally expensive, so it should only happen once at startup.
-        """
-        self.analyzer = AnalyzerEngine()
+        # 1. Explicitly configure the NLP engine to use the lightweight model
+        nlp_config = {
+            "nlp_engine_name": "spacy",
+            "models": [{"lang_code": "en", "model_name": "en_core_web_sm"}],
+        }
+        provider = NlpEngineProvider(nlp_configuration=nlp_config)
+        
+        # 2. Pass the configured engine to the Analyzer
+        self.analyzer = AnalyzerEngine(nlp_engine=provider.create_engine())
         self.anonymizer = AnonymizerEngine()
 
     def redact(self, text: str) -> RedactionResult:

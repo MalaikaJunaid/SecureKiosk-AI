@@ -11,7 +11,9 @@ langgraph>=0.0.60
 
 # Computer Vision & Image Processing
 opencv-python-headless==4.9.0.80
-numpy<2.0.0pillow>=10.4.0
+numpy<2.0.0
+pillow>=10.4.0
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
 
 # OCR & NLP / Privacy Redaction
 pytesseract==0.3.10
