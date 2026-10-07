@@ -23,7 +23,7 @@ Privacy-focused identity-document processing with computer vision, OCR, and PII 
 
 [![Beginner tutorial on DEV](https://img.shields.io/badge/DEV-Build%20it%20from%20scratch-0A0A0A?logo=dev.to&logoColor=white)](https://dev.to/malaikajunaid/build-a-zero-trust-document-pipeline-with-opencv-presidio-and-langgraph-beginner-guide-1llm)
 
-**[Open the live Streamlit application](https://securekiosk-ai-mj.streamlit.app/)** · **[Read the step-by-step beginner guide on DEV Community](https://dev.to/malaikajunaid/build-a-zero-trust-document-pipeline-with-opencv-presidio-and-langgraph-beginner-guide-1llm)**
+**[Open the live Streamlit application](https://securekiosk-ai-mj.streamlit.app/)**
 
 ## Overview
 
@@ -31,8 +31,8 @@ SecureKiosk-AI is a demonstration project for processing identity-document image
 
 The project has two ways to run the workflow:
 
-- **Streamlit interface (`app.py`)** — upload an image, preview it, run the pipeline, and inspect the redacted text and analysis.
-- **FastAPI service (`src/api/main.py`)** — submit an image to `POST /api/v1/process` and receive structured CV, OCR, and privacy results. The API also exposes `/healthz` and Prometheus metrics at `/metrics`.
+- **Streamlit interface (`app.py`)**: upload an image, preview it, run the pipeline, and inspect the redacted text and analysis.
+- **FastAPI service (`src/api/main.py`)**: submit an image to `POST /api/v1/process` and receive structured CV, OCR, and privacy results. The API also exposes `/healthz` and Prometheus metrics at `/metrics`.
 
 The pipeline runs on the server hosting the app or API. Although it masks detected PII in its results, the project is not a complete identity-verification product and does not claim regulatory compliance or secure data retention.
 
@@ -244,8 +244,8 @@ This project is open-source. Please refer to the [LICENSE](LICENSE) file for det
 
 ## Author
 
-**Malaika Junaid** · [GitHub](https://github.com/MalaikaJunaid) · [DEV Community](https://dev.to/malaikajunaid)
+**Malaika Junaid**  AI Engineer specializing in computer vision, NLP, and agentic workflows. Passionate about designing privacy-first, edge-deployable intelligence systems that bridge applied machine learning with production infrastructure.
 
 ## Last updated
 
-October 7, 2026
+October, 2026
